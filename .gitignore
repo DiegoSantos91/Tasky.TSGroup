@@ -1,0 +1,38 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET Core
+bin/
+obj/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Node.js / React
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# SQL Server
+*.mdf
+*.ldf
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Test results
+TestResults/
+
+# User specific
+nuget.config

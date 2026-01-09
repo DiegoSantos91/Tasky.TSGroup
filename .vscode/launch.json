@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (Backend)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/Tasky.Api/bin/Debug/net9.0/Tasky.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Tasky.Api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "console": "internalConsole"
+        },
+        {
+            "name": "Launch Frontend (Chrome)",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/src/Tasky.Web"
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Full Stack Run",
+            "configurations": [
+                ".NET Core Launch (Backend)",
+                "Launch Frontend (Chrome)"
+            ],
+            "stopAll": true
+        }
+    ]
+}

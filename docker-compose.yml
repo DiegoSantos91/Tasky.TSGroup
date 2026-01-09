@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: tasky-db
+    environment:
+      SA_PASSWORD: "Tasky@2026!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    networks:
+      - tasky-network
+    healthcheck:
+      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "Tasky@2026!" -C -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+  web:
+    build:
+      context: ./src/Tasky.Web
+      dockerfile: Dockerfile
+    container_name: tasky-web
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src/Tasky.Web:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_BASE_URL=http://localhost:5000
+    networks:
+      - tasky-network
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  sqlserver_data:
+
+
+networks:
+  tasky-network:
+    driver: bridge
