@@ -28,7 +28,7 @@ public class TaskService
 
     public async Task<TaskDto> CreateTaskAsync(CreateTaskDto createDto)
     {
-        TaskItem task = new TaskItem
+        TaskItem task = new()
         {
             Title = createDto.Title,
             Description = createDto.Description,

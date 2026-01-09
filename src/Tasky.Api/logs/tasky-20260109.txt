@@ -402,3 +402,16 @@ ORDER BY [t].[CreatedAt] DESC
 2026-01-09 01:30:39.792 -03:00 [INF] Executed action Tasky.Api.Controllers.TasksController.GetAll (Tasky.Api) in 3.8783ms
 2026-01-09 01:30:39.792 -03:00 [INF] Executed endpoint 'Tasky.Api.Controllers.TasksController.GetAll (Tasky.Api)'
 2026-01-09 01:30:39.792 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/api/tasks - 200 null application/json; charset=utf-8 4.248ms
+2026-01-09 02:47:35.445 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/health - null null
+2026-01-09 02:47:35.446 -03:00 [INF] Executing endpoint 'Health checks'
+2026-01-09 02:47:39.915 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/health - null null
+2026-01-09 02:47:39.915 -03:00 [INF] Executing endpoint 'Health checks'
+2026-01-09 02:47:39.924 -03:00 [ERR] Health check database with status "Unhealthy" completed after 4465.3722ms with message 'null'
+2026-01-09 02:47:39.929 -03:00 [INF] Executed endpoint 'Health checks'
+2026-01-09 02:47:39.929 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/health - 503 null text/plain 4484.3055ms
+2026-01-09 02:47:55.637 -03:00 [ERR] Health check database with status "Unhealthy" completed after 15721.5863ms with message 'null'
+2026-01-09 02:47:55.637 -03:00 [INF] Executed endpoint 'Health checks'
+2026-01-09 02:47:55.637 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/health - 503 null text/plain 15722.7593ms
+2026-01-09 02:47:55.764 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico - null null
+2026-01-09 02:47:55.764 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/favicon.ico - 404 0 null 0.5398ms
+2026-01-09 02:47:55.765 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5000/favicon.ico, Response status code: 404

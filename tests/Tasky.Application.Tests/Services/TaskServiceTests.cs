@@ -25,11 +25,11 @@ public class TaskServiceTests
     public async Task GetAllTasksAsync_ShouldReturnAllTasks()
     {
         // Arrange
-        List<TaskItem> tasks = new List<TaskItem>
-        {
-            new TaskItem { Id = Guid.NewGuid(), Title = "Task 1", Status = TaskStatusEnum.Pending },
-            new TaskItem { Id = Guid.NewGuid(), Title = "Task 2", Status = TaskStatusEnum.InProgress }
-        };
+        List<TaskItem> tasks =
+        [
+            new() { Id = Guid.NewGuid(), Title = "Task 1", Status = TaskStatusEnum.Pending },
+            new() { Id = Guid.NewGuid(), Title = "Task 2", Status = TaskStatusEnum.InProgress }
+        ];
         _repositoryMock.Setup(r => r.GetAllAsync()).ReturnsAsync(tasks);
 
         // Act
@@ -45,7 +45,7 @@ public class TaskServiceTests
     public async Task GetTaskByIdAsync_WhenTaskExists_ShouldReturnTask()
     {
         // Arrange
-        TaskItem task = new TaskItem { Id = _testId, Title = "Test Task", Status = TaskStatusEnum.Pending };
+        TaskItem task = new() { Id = _testId, Title = "Test Task", Status = TaskStatusEnum.Pending };
         _repositoryMock.Setup(r => r.GetByIdAsync(_testId)).ReturnsAsync(task);
 
         // Act
@@ -75,13 +75,13 @@ public class TaskServiceTests
     public async Task CreateTaskAsync_ShouldCreateAndReturnTask()
     {
         // Arrange
-        CreateTaskDto createDto = new CreateTaskDto
+        CreateTaskDto createDto = new()
         {
             Title = "New Task",
             Description = "New Description"
         };
 
-        TaskItem createdTask = new TaskItem
+        TaskItem createdTask = new()
         {
             Id = _testId,
             Title = createDto.Title,
@@ -107,7 +107,7 @@ public class TaskServiceTests
     public async Task UpdateTaskAsync_WhenTaskExists_ShouldUpdateAndReturnTask()
     {
         // Arrange
-        TaskItem existingTask = new TaskItem
+        TaskItem existingTask = new()
         {
             Id = _testId,
             Title = "Old Title",
@@ -115,7 +115,7 @@ public class TaskServiceTests
             Status = TaskStatusEnum.Pending
         };
 
-        UpdateTaskDto updateDto = new UpdateTaskDto
+        UpdateTaskDto updateDto = new()
         {
             Title = "Updated Title",
             Description = "Updated Description"
@@ -139,7 +139,7 @@ public class TaskServiceTests
     public async Task UpdateTaskAsync_WhenTaskDoesNotExist_ShouldReturnNull()
     {
         // Arrange
-        UpdateTaskDto updateDto = new UpdateTaskDto { Title = "Updated Title" };
+        UpdateTaskDto updateDto = new() { Title = "Updated Title" };
         _repositoryMock.Setup(r => r.GetByIdAsync(_nonExistentId)).ReturnsAsync((TaskItem?)null);
 
         // Act
@@ -154,14 +154,14 @@ public class TaskServiceTests
     public async Task ChangeTaskStatusAsync_WhenTaskExists_ShouldUpdateStatus()
     {
         // Arrange
-        TaskItem existingTask = new TaskItem
+        TaskItem existingTask = new()
         {
             Id = _testId,
             Title = "Test Task",
             Status = TaskStatusEnum.Pending
         };
 
-        ChangeStatusDto statusDto = new ChangeStatusDto { Status = TaskStatusEnum.Completed };
+        ChangeStatusDto statusDto = new() { Status = TaskStatusEnum.Completed };
 
         _repositoryMock.Setup(r => r.GetByIdAsync(_testId)).ReturnsAsync(existingTask);
         _repositoryMock.Setup(r => r.UpdateAsync(It.IsAny<TaskItem>()))
@@ -180,7 +180,7 @@ public class TaskServiceTests
     public async Task ChangeTaskStatusAsync_WhenTaskDoesNotExist_ShouldReturnNull()
     {
         // Arrange
-        ChangeStatusDto statusDto = new ChangeStatusDto { Status = TaskStatusEnum.Completed };
+        ChangeStatusDto statusDto = new() { Status = TaskStatusEnum.Completed };
         _repositoryMock.Setup(r => r.GetByIdAsync(_nonExistentId)).ReturnsAsync((TaskItem?)null);
 
         // Act
