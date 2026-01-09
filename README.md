@@ -231,7 +231,7 @@ Logging estructurado con Serilog:
 - Salida a archivo: `logs/tasky-YYYYMMDD.txt`
 - Rotación automática
 - Para ver logs en tiempo real desde PowerShell:
-  `Get-Content d:\tasky_migration\src\Tasky.Api\logs\tasky-*.txt -Wait -Tail 20`
+  ejemplo: `Get-Content d:\tasky_migration\src\Tasky.Api\logs\tasky-*.txt -Wait -Tail 20` se debe poner la ruta donde uno guardo los logs.
 
 ## 🔒 Política CORS
 
